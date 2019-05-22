@@ -1,6 +1,7 @@
 <?php
-/**
- * User: lyhoshva lyhoshvavlad@gmail.com
- * Date: 22.05.19
- * Time: 22:23
- */
+
+require_once(__DIR__ . '/../vendor/autoload.php');
+
+use App\Application;
+
+(new Application())->run();
