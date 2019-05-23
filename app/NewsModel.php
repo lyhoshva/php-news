@@ -10,7 +10,7 @@ namespace App;
 class NewsModel
 {
     public $id;
-    public $creation_datetime;
+    public $creation_date;
     public $is_published;
     public $short_text;
     public $full_text;

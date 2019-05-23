@@ -12,5 +12,15 @@ class NewsRepository extends Repository
     protected static $model = NewsModel::class;
     protected static $table = 'news';
 
-    //Other specific methods for news repository
+    public function findOne($id, $where = [])
+    {
+        $where = array_merge($where, ['is_published' => 1]);
+        return parent::findOne($id, $where);
+    }
+
+    public function findAll($where = [], $page = 1, $perPage = 3)
+    {
+        $where = array_merge($where, ['is_published' => 1]);
+        return parent::findAll($where, $page, $perPage);
+    }
 }

@@ -11,7 +11,8 @@ class NewsController extends Controller
 {
     public function actionNewsList($page)
     {
-        $newsList = NewsRepository::findAll($page);
+        /** @var NewsModel[] $newsList */
+        $newsList = (new NewsRepository())->findAll($page);
 
         return $this->render('newsList', [
             'newsList' => $newsList,
@@ -20,7 +21,8 @@ class NewsController extends Controller
 
     public function actionNewsListXml($page)
     {
-        $newsList = NewsRepository::findAll($page);
+        /** @var NewsModel[] $newsList */
+        $newsList = (new NewsRepository())->findAll($page);
 
         return $this->render('newsListXml', [
             'newsList' => $newsList,
@@ -30,7 +32,7 @@ class NewsController extends Controller
     public function actionNews($id)
     {
         /** @var NewsModel $news */
-        $news = NewsRepository::findOne($id);
+        $news = (new NewsRepository())->findOne($id);
         if (!$news) {
             //Code must be constant
             throw new \Exception('Not Found', 404);
