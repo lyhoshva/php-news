@@ -13,4 +13,9 @@ class Controller
     {
         return (new View())->render($view, $params);
     }
+
+    public function setHeader($name, $value)
+    {
+        header($name . ':' . $value);
+    }
 }

@@ -7,20 +7,24 @@
 
 namespace App;
 
-class NewsRepository extends Repository
+class NewsRepository
 {
     protected static $model = NewsModel::class;
     protected static $table = 'news';
 
-    public function findOne($id, $where = [])
+    public function findOne($id)
     {
-        $where = array_merge($where, ['is_published' => 1]);
-        return parent::findOne($id, $where);
+        return $this->getResource()->findOne($id, ['is_published' => 1]);
     }
 
-    public function findAll($where = [], $page = 1, $perPage = 3)
+    public function findAll($page = 1, $perPage = 3)
     {
-        $where = array_merge($where, ['is_published' => 1]);
-        return parent::findAll($where, $page, $perPage);
+        return $this->getResource()->findAll($page, $perPage, ['is_published' => 1]);
+    }
+
+    private function getResource()
+    {
+        //DB class should be injected
+        return new DB(self::$table, self::$model);
     }
 }
