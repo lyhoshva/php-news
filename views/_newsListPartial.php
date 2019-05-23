@@ -4,12 +4,6 @@
  * @var $newsList \App\NewsModel[]
  */
 ?>
-
-<html>
-<head>
-</head>
-<body>
-<h1>News</h1>
 <?php foreach ($newsList as $news) : ?>
     <article>
         <h2>
@@ -22,6 +16,3 @@
 
     </article>
 <?php endforeach; ?>
-</body>
-</html>
-

@@ -23,6 +23,7 @@ class NewsController extends Controller
     {
         /** @var NewsModel[] $newsList */
         $newsList = (new NewsRepository())->findAll($page);
+        $this->setHeader('Content-Type', 'text/xml');
 
         return $this->render('newsListXml', [
             'newsList' => $newsList,
@@ -31,15 +32,20 @@ class NewsController extends Controller
 
     public function actionNews($id)
     {
+        $repository = new NewsRepository();
         /** @var NewsModel $news */
-        $news = (new NewsRepository())->findOne($id);
+        $news = $repository->findOne($id);
         if (!$news) {
             //Code must be constant
             throw new \Exception('Not Found', 404);
         }
 
+        //random news
+        $newsList = (new NewsRepository())->findAll();
+
         return $this->render('news', [
             'news' => $news,
+            'newsList' => $newsList,
         ]);
     }
 }
