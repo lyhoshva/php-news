@@ -9,8 +9,8 @@ namespace App;
 
 class NewsRepository extends Repository
 {
-    private static $model = NewsModel::class;
-    private static $table = 'news';
+    protected static $model = NewsModel::class;
+    protected static $table = 'news';
 
     //Other specific methods for news repository
 }

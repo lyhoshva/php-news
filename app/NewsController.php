@@ -32,7 +32,8 @@ class NewsController extends Controller
         /** @var NewsModel $news */
         $news = NewsRepository::findOne($id);
         if (!$news) {
-            throw new \Exception('404 Not Found');
+            //Code must be constant
+            throw new \Exception('Not Found', 404);
         }
 
         return $this->render('news', [
